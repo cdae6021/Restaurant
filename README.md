@@ -40,6 +40,6 @@ $ npm i -g nodemon
 ```
 success , http:/localhost:3000
 ```
-關閉server
+##關閉server
 ```
 ctrl + c
