@@ -1,5 +1,5 @@
 {
-    "name": "A1",
+    "name": "a1",
     "version": "1.0.0",
     "description": "",
     "main": "app.js",
@@ -13,6 +13,7 @@
     "license": "ISC",
     "dependencies": {
         "express": "^4.17.2",
-        "express-handlebars": "^3.0.0"
+        "express-handlebars": "^3.0.0",
+        "mongoose": "^6.1.6"
     }
 }
