@@ -1,7 +1,7 @@
 # My Restaurant List
 
 ## 簡介
-電影清單的另一個實作：餐廳清單
+我的餐廳清單
 
 ## 功能
 - 使用者可以在首頁看到所有餐廳與它們的簡單資料：
@@ -40,6 +40,6 @@ $ npm i -g nodemon
 ```
 success , http:/localhost:3000
 ```
-關閉server
+## 關閉server
 ```
 ctrl + c
