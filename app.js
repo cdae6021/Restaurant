@@ -97,6 +97,16 @@ app.post('/new', (req, res) => {
         .catch(error => console.log(error))
 })
 
+//刪除餐廳
+app.post('/restaurants/:_id/delete', (req, res) => {
+    const id = req.params._id
+    restaurantData
+        .findById(id)
+        .then(item => item.remove())
+        .then(() => res.redirect('/'))
+        .catch(error => console.log(error))
+})
+
 app.listen(port, () => {
     console.log(`success , http:/localhost:${port}`)
 })
