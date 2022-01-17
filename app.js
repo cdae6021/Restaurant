@@ -108,10 +108,5 @@ app.post('/restaurants/:_id/delete', (req, res) => {
 })
 
 app.listen(port, () => {
-<<<<<<< HEAD
     console.log(`success , http:/localhost:${port}`)
 })
-=======
-    console.log(`success , https://localhost:${port}`)
-})
->>>>>>> d02e17256de4ad95305a19434252e8bc16589460
