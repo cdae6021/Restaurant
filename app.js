@@ -6,7 +6,7 @@ const app = express()
 const port = 3000
 const db = mongoose.connection
 
-mongoose.connect('mongodb://localhost/restaurant')
+mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
 
 db.on('error', () => {
     console.log('mongodb error!')
