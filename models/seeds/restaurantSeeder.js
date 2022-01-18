@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const restaurantJSON = require('../restaurant.json')
 const Restaurant = require('../restaurant')
+
 const db = mongoose.connection
 mongoose.connect('mongodb://localhost/restaurant', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -24,5 +25,5 @@ db.once('open', () => {
             description: `${restaurantJSON.results[i].description}`
         })
     }
-    console.log('complete!')
+    console.log('done!')
 })
