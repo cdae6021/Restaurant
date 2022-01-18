@@ -49,7 +49,7 @@ app.get('/restaurants/:_id', (req, res) => {
 
 //搜尋功能
 app.get('/search', (req, res) => {
-    const keyword = req.query.keyword.toLowerCase()
+    const keyword = req.query.keyword.toLowerCase().trim()
     restaurantData
         .find()
         .lean()
