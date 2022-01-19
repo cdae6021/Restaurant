@@ -1,4 +1,4 @@
-<form action="/new" method="POST">
+<form action="/restaurants/new" method="POST">
 
   <h1 class="mb-1 restaurant-show-title">
     新增餐館清單</h1>
@@ -11,16 +11,19 @@
             required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="text" name="name_en" id="name_en" placeholder="輸入店名縮寫"
             class="input-group input-group-lg form-control" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="text" name="category" id="category" placeholder="輸入餐廳主題"
             class="input-group input-group-lg form-control" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="text" name="image" id="image"
             placeholder="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg"
@@ -28,31 +31,37 @@
             value="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5635/01.jpg" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="text" name="location" id="location" placeholder="輸入餐廳位置"
             class="input-group input-group-lg form-control" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="number" name="phone" id="phone" placeholder="輸入連絡電話"
             class="input-group input-group-lg form-control" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <input type="text" name="google_map" id="google_map" placeholder="https://goo.gl/maps/cUJEmFSRKyH2"
             class="input-group input-group-lg form-control" required>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
-          <input type="number" name="rating" id="rating" placeholder="輸入餐廳評價"
-            class="input-group input-group-lg form-control" required>
+          <input type="number" name="rating" id="rating" placeholder="輸入餐廳評價" max="5" min="0"
+            class="input-group input-group-lg form-control" required >
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="input-group mb-3">
           <textarea class="input-group input-group-lg form-control" rows="3" type="text" name="description"
             id="description" placeholder="輸入餐館描述:" required></textarea>
           <div class="invalid-feedback">必要欄位</div>
         </div>
+
         <div class="text-center">
           <button type="submit" class="btn btn-outline-secondary btn-m editSubmit">送出</button>
         </div>

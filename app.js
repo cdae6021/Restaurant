@@ -3,7 +3,10 @@ const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const methodOverrride = require('method-override')
+
 const restaurantData = require('./models/restaurant')
+const routes = require('./routes/index')
+
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -27,6 +30,8 @@ app.use(express.static('public'))
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(methodOverrride('_method'))
+
+app.use(routes)
 
 //餐廳清單首頁
 app.get('/', (req, res) => {
