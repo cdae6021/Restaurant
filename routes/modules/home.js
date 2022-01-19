@@ -47,7 +47,7 @@ router.post('/sort', (req, res) => {
         .find()
         .lean()
         .sort(sortSelect)
-        .then(item => res.render('index', { item }))
+        .then(item => res.render('index', { item, sort }))
         .catch(error => console.log(error))
 })
 
