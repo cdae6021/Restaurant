@@ -37,10 +37,10 @@
                 <i class="fas fa-star fa-xs"></i>
               </span>
              <div class="footer mb-1" style="text-align:right;">
-              <a href="/restaurants/{{this._id}}" class="btn btn-outline-secondary btn-sm">detail</a>
-              <a href="/restaurants/{{this._id}}/edit" class="btn btn-outline-secondary btn-sm">edit</a>
-              <form action="/restaurants/{{this._id}}/delete" method="post" style="display: inline;"> 
-              <button type="submit" class="btn btn-outline-secondary btn-sm"> delete</button>
+              <a href="/restaurants/{{this._id}}" class="btn btn-outline-secondary btn-sm">詳情</a>
+              <a href="/restaurants/{{this._id}}/edit" class="btn btn-outline-secondary btn-sm">編輯</a>
+              <form action="/restaurants/{{this._id}}?_method=DELETE" method="post" style="display: inline;"> 
+              <button type="submit" class="btn btn-outline-secondary btn-sm"> 刪除 </button>
                </form>
              </div>
             </div>

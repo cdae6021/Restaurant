@@ -1,9 +1,9 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
-const restaurantData = require('./models/restaurant')
 const bodyParser = require('body-parser')
-const restaurant = require('./models/restaurant')
+const methodOverrride = require('method-override')
+const restaurantData = require('./models/restaurant')
 const app = express()
 const port = 3000
 const db = mongoose.connection
@@ -26,7 +26,7 @@ app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
-
+app.use(methodOverrride('_method'))
 
 //餐廳清單首頁
 app.get('/', (req, res) => {
@@ -70,7 +70,7 @@ app.get('/restaurants/:_id/edit', (req, res) => {
         .catch(error => console.log(error))
 })
 
-app.post('/restaurants/:_id/edit', (req, res) => {
+app.put('/restaurants/:_id', (req, res) => {
     const id = req.params._id
     restaurantData
         .findById(id)
@@ -98,7 +98,7 @@ app.post('/new', (req, res) => {
 })
 
 //刪除餐廳
-app.post('/restaurants/:_id/delete', (req, res) => {
+app.delete('/restaurants/:_id/', (req, res) => {
     const id = req.params._id
     restaurantData
         .findById(id)

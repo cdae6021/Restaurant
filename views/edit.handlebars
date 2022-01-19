@@ -1,4 +1,4 @@
-<form action="/restaurants/{{ item._id }}/edit" method="post">
+<form action="/restaurants/{{ item._id }}?_method=PUT" method="post">
         <h1 class="mb-1 restaurant-show-title">{{item.name}}</h1>
         <div class="container">
         <div class="row">
@@ -10,7 +10,7 @@
                 類別：
                 </span>
                  <input type="text" name="category" id="category" placeholder="category" class="form-control"value="{{item.category}}" required>
-                 <div class="invalid-feedback">必要欄位</div>
+                 <div class="invalid-feedback"> 必要欄位 </div>
             </p>
 
             <p class="mb-1">
@@ -19,7 +19,7 @@
                 地址：
                 </span>
                 <input type="text" name="location" id="location" placeholder="location" class="form-control"value="{{item.location}}" required>
-                 <div class="invalid-feedback">必要欄位</div>
+                <div class="invalid-feedback">必要欄位</div>
             </p>
 
             <p class="mb-1">
@@ -28,19 +28,19 @@
                 電話：
                 </span>
                 <input type="number" name="phone" id="phone" placeholder="phone" class="form-control" value="{{item.phone}}" required>
-                 <div class="invalid-feedback">必要欄位</div>
+                <div class="invalid-feedback">必要欄位</div>
             </p>
 
             <p class="mb-5">
                 描述：
-            <input type="tel" name="description" id="description" placeholder="description" class="form-control"value="{{item.description}}" required>
-                 <div class="invalid-feedback">必要欄位</div>
+                <input type="text" name="description" id="description" placeholder="description" class="form-control"value="{{item.description}}" required>
+                <div class="invalid-feedback">必要欄位</div>
             </p>
 
-        <div>
-          <button type="submit" class="btn btn-outline-secondary btn-m editSubmit">修改確認</button>
-          <a href="/" class="btn btn-outline-secondary btn-m">取消</a>
-        </div>
+            <div>
+              <button type="submit" class="btn btn-outline-secondary btn-m editSubmit">修改確認</button>
+              <a href="/" class="btn btn-outline-secondary btn-m">取消</a>
+            </div>
 
             <img class="rounded mx-auto d-block mb-4 w-100" src="{{item.image}}" alt={{ item.name }} style="max-width: 600px;">
             </div>
