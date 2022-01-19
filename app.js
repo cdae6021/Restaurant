@@ -11,7 +11,18 @@ const port = 3000
 
 
 
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main',
+    helpers: {
+        selected: function(option, value) {
+            if (option === value) {
+                return "selected";
+            } else {
+                return "";
+            }
+        },
+    },
+}))
 
 app.set('view engine', 'handlebars')
 

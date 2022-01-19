@@ -9,7 +9,6 @@ router.get('/', (req, res) => {
     restaurantData
         .find()
         .lean()
-        .sort({ _id: 'asc' })
         .then(item => res.render('index', { item }))
         .catch(error => console.log(error))
 })
@@ -26,5 +25,31 @@ router.get('/search', (req, res) => {
         })
         .catch(error => console.log(error))
 })
+
+//排序功能
+router.post('/sort', (req, res) => {
+    const sort = req.body.sort
+    let sortSelect = {}
+
+    if (Number(sort) === 1) {
+        sortSelect = { name: "asc" }
+    } else if (Number(sort) === 2) {
+        sortSelect = { name: "desc" }
+    } else if (Number(sort) === 3) {
+        sortSelect = { category: "asc" }
+    } else if (Number(sort) === 4) {
+        sortSelect = { location: "asc" }
+    } else {
+        sortSelect = { _id: "asc" }
+    }
+
+    restaurantData
+        .find()
+        .lean()
+        .sort(sortSelect)
+        .then(item => res.render('index', { item }))
+        .catch(error => console.log(error))
+})
+
 
 module.exports = router
