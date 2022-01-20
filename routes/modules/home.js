@@ -3,30 +3,25 @@ const router = express.Router()
 
 const restaurantData = require('../../models/restaurant')
 
-//餐廳清單首頁
 router.get('/', (req, res) => {
-    restaurantData
-        .find()
-        .lean()
-        .then(item => res.render('index', { item }))
-        .catch(error => console.log(error))
-})
-
-//搜尋功能
-router.get('/search', (req, res) => {
-    const keyword = req.query.keyword.toLowerCase().trim()
+    const keyword = req.query.keyword
     restaurantData
         .find()
         .lean()
         .then(item => {
-            const keywordFilter = item.filter(item => item.name.includes(keyword) || item.category.includes(keyword))
-            res.render('index', { item: keywordFilter, keyword })
-        })
-        .catch(error => console.log(error))
+            if (!keyword) {
+                res.render('index', { item })
+            } else {
+                const keywordFilter = item.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase().trim()) || item.category.includes(keyword.toLowerCase().trim()))
+                res.render('index', { item: keywordFilter, keyword })
+            }
+        }).catch(error => console.log(error))
 })
 
+
+
 //排序功能
-router.post('/', (req, res) => {
+router.post('/sort', (req, res) => {
     const sort = req.body.sort
     let sortSelect = {}
 
