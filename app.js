@@ -9,8 +9,6 @@ require('./config/mongoose')
 const app = express()
 const port = 3000
 
-
-
 app.engine('handlebars', exphbs({
     defaultLayout: 'main',
     helpers: {
@@ -33,8 +31,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(methodOverrride('_method'))
 
 app.use(routes)
-
-
 
 
 app.listen(port, () => {

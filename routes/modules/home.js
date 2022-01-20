@@ -3,7 +3,6 @@ const router = express.Router()
 
 const restaurantData = require('../../models/restaurant')
 
-
 //餐廳清單首頁
 router.get('/', (req, res) => {
     restaurantData
@@ -27,7 +26,7 @@ router.get('/search', (req, res) => {
 })
 
 //排序功能
-router.post('/sort', (req, res) => {
+router.post('/', (req, res) => {
     const sort = req.body.sort
     let sortSelect = {}
 
