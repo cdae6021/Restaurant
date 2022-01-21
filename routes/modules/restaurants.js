@@ -12,8 +12,12 @@ router.post('/new', (req, res) => {
     return restaurantData
         .create(req.body)
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('errorPage', { status: 500, error: err.message })
+        })
 })
+
 
 //個別餐廳資訊
 router.get('/:_id', (req, res) => {
@@ -22,7 +26,10 @@ router.get('/:_id', (req, res) => {
         .findById(id)
         .lean()
         .then(item => res.render('show', { item }))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('errorPage', { status: 500, error: err.message })
+        })
 })
 
 
@@ -33,8 +40,12 @@ router.get('/:_id/edit', (req, res) => {
         .findById(id)
         .lean()
         .then(item => res.render('edit', { item }))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('errorPage', { status: 500, error: err.message })
+        })
 })
+
 
 router.put('/:_id', (req, res) => {
     const id = req.params._id
@@ -48,7 +59,10 @@ router.put('/:_id', (req, res) => {
             return item.save()
         })
         .then(() => res.redirect(`/restaurants/${id}`))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('errorPage', { status: 500, error: err.message })
+        })
 })
 
 
@@ -59,7 +73,10 @@ router.delete('/:_id/', (req, res) => {
         .findById(id)
         .then(item => item.remove())
         .then(() => res.redirect('/'))
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.render('errorPage', { status: 500, error: err.message })
+        })
 })
 
 module.exports = router
