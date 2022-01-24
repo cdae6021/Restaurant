@@ -1,0 +1,30 @@
+diff a/routes/modules/home.js b/routes/modules/home.js	(rejected hunks)
+@@ -20,14 +20,24 @@
+     } else {
+         sortSelect = { _id: "asc" }
+     }
+-
+     restaurantData
+         .find()
+         .lean()
+         .sort(sortSelect)
+-        .then(item => res.render('index', { item, sort }))
+-        .catch(error => console.log(error))
++        .then(item => {
++            if (!keyword) {
++                res.render('index', { item, sort })
++            } else {
++                const keywordFilter = item.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase().trim()) || item.category.includes(keyword.toLowerCase().trim()))
++                res.render('index', { item: keywordFilter, keyword, sort })
++            }
++        }).catch(error => {
++            console.log(error)
++            res.render('errorPage', { status: 500, error: err.message })
++        })
+ })
+ 
+ 
++
++
+ module.exports = router
+\ No newline at end of file

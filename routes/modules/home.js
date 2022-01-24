@@ -28,16 +28,12 @@ router.get('/', (req, res) => {
             if (!keyword) {
                 res.render('index', { item, sort })
             } else {
-                const keywordFilter = item.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase().trim()) || item.category.includes(keyword.toLowerCase().trim()))
-                res.render('index', { item: keywordFilter, keyword, sort })
+                const keywordFilter = item.filter(item => item.name.toLowerCase().includes(keyword.toLowerCase().trim()) || item.category.includes(keyword.toLowerCase().trim())) res.render('index', { item: keywordFilter, keyword, sort })
             }
         }).catch(error => {
             console.log(error)
             res.render('errorPage', { status: 500, error: err.message })
         })
 })
-
-
-
 
 module.exports = router
