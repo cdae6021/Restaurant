@@ -1,6 +1,5 @@
 const express = require('express')
 const exphbs = require('express-handlebars')
-const bodyParser = require('body-parser')
 const methodOverrride = require('method-override')
 
 const routes = require('./routes/index')
@@ -26,7 +25,7 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static('public'))
 
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true }))
 
 app.use(methodOverrride('_method'))
 
