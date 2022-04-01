@@ -41,15 +41,17 @@ router.post('/register', (req, res) => {
         if (user) {
             errors.push({ message: '這個 Email 已經註冊過了。' })
             res.render('register', { errors, name, email, password, confirmPassword }) //使用者已存在，重新回到註冊頁面，且保有使用者輸入資料
-        } else {
-            return User.create({
-                    name,
-                    email,
-                    password
-                })
-                .then(() => res.redirect('/'))
-                .catch(err => console.log(err))
         }
+        return bcrypt
+            .genSalt(10) // 產生「鹽」，並設定複雜度係數為 10
+            .then(salt => bcrypt.hash(password, salt)) // 為使用者密碼「加鹽」，產生雜湊值
+            .then(hash => User.create({
+                name,
+                email,
+                password: hash // 用雜湊值取代原本的使用者密碼
+            }))
+            .then(() => res.redirect('/'))
+            .catch(err => console.log(err))
     })
 })
 
