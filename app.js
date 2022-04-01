@@ -4,6 +4,9 @@ const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const methodOverrride = require('method-override')
 const flash = require('connect-flash')
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config()
+}
 const routes = require('./routes/index')
 require('./config/mongoose')
 
@@ -26,7 +29,7 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 app.use(session({
-    secret: 'ThisIsMySecret',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true
 }))
