@@ -3,7 +3,7 @@ const session = require('express-session')
 const usePassport = require('./config/passport')
 const exphbs = require('express-handlebars')
 const methodOverrride = require('method-override')
-
+const flash = require('connect-flash')
 const routes = require('./routes/index')
 require('./config/mongoose')
 
@@ -38,6 +38,16 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverrride('_method'))
 
 usePassport(app)
+
+app.use(flash())
+
+app.use((req, res, next) => {
+    res.locals.isAuthenticated = req.isAuthenticated() //將此兩個req傳到res.local，如此一來便能供前端樣板使用
+    res.locals.user = req.user
+    res.locals.success_msg = req.flash('success_msg')
+    res.locals.warning_msg = req.flash('warning_msg')
+    next()
+})
 
 app.use(routes)
 

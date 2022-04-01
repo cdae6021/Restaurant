@@ -6,11 +6,10 @@ const restaurants = require('./modules/restaurants')
 const users = require('./modules/users')
 
 const { authenticator } = require('../middleware/auth') // 掛載 middleware
-router.use('/', authenticator, home) // 加入驗證程序
+
 router.use('/restaurants', authenticator, restaurants) // 加入驗證程序
-
 router.use('/users', users)
+router.use('/', authenticator, home) // 加入驗證程序
 router.use('/', home)
-
 
 module.exports = router
