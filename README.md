@@ -1,10 +1,13 @@
-# My Restaurant List
+# My Restaurant List!
+[A1](https://user-images.githubusercontent.com/96229122/161409533-1e549d4f-2075-4a3c-b02f-c54289def6e1.png)
+
 ![A8](https://user-images.githubusercontent.com/96229122/150272048-92537634-8865-476d-91f1-2cdf7762d7bd.png)
 ## 簡介
 我的餐廳清單
 
 ## 功能
-- 使用者可以登入、登出、註冊帳號
+- 使用者可以登入、登出、註冊帳號![A1](https://user-images.githubusercontent.com/96229122/161409529-94f74810-9825-4018-9707-13f1b9794a6d.png)
+
 
 - 使用者可以透過臉書帳號快速登入
 
