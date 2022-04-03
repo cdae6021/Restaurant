@@ -7,6 +7,7 @@ router.get('/', (req, res) => {
     const keyword = !req.query.keyword ? '' : req.query.keyword.trim()
     const sort = req.query.sort
     let sortSelect = {}
+    const userId = req.user._id
 
     switch (sort) {
 
@@ -27,7 +28,7 @@ router.get('/', (req, res) => {
     }
 
     restaurantData
-        .find({ $or: [{ name: { $regex: keyword, $options: 'i' } }, { category: { $regex: keyword, $options: 'i' } }] })
+        .find({ $and: [{ $or: [{ name: { $regex: keyword, $options: 'i' } }, { category: { $regex: keyword, $options: 'i' } }] }, { userId }] })
         .sort(sortSelect)
         .lean()
         .then(item => {
